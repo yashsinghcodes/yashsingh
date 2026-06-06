@@ -1,9 +1,16 @@
-<section class="asteroids-panel" aria-label="Asteroids mini game">
-	<div class="asteroids-label">
-		<span>./asteroids</span>
-		<span>arrows or wasd + space</span>
+<section class="mx-auto mt-6 w-full max-w-3xl px-5 font-mono" aria-label="Asteroids mini game">
+	<div class="mb-2 flex items-center gap-3 border border-dashed border-gray-500 bg-gray-50 px-3 py-2 font-mono text-sm font-bold text-black">
+		<span class="min-w-0 truncate">
+			<span class="text-gray-500">~/portfolio</span> $ ./asteroids<span class="terminal-block-cursor" aria-hidden="true"></span>
+		</span>
 	</div>
-	<canvas id="asteroids-game" width="760" height="220"></canvas>
+	<div class="border border-dashed border-gray-500 bg-gray-50">
+		<div class="flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-400 px-3 py-2 text-xs font-bold text-gray-600">
+			<span>mode: <span id="arcade-status">loading</span></span>
+			<span>controls: arrows/wasd + space</span>
+		</div>
+		<canvas id="asteroids-game" class="block h-[220px] w-full cursor-pointer touch-manipulation md:h-[240px]" width="760" height="220"></canvas>
+	</div>
 </section>
 
 <script>
@@ -195,7 +202,6 @@
 				ctx.fillRect((star.x / 760) * state.w, (star.y / 220) * state.h, 1.5, 1.5);
 			}
 
-			ctx.strokeRect(0.5, 0.5, state.w - 1, state.h - 1);
 			lineText(`score ${state.score}`, 12, 18);
 			lineText(state.alive ? "shoot rocks, don't become dust" : "ship deleted - space to reboot", state.w - 12, 18, "right");
 
@@ -234,4 +240,28 @@
 		reset();
 		loop();
 	}
+
+	const arcadeStatus = document.getElementById("arcade-status");
+
+	const getArcadeStatusForHour = (hour) => {
+		if (hour >= 22 || hour < 6) return "eppy_mode";
+		if (hour < 10) return "warmup_run";
+		if (hour < 13) return "locked_in";
+		if (hour < 17) return "active_sim";
+		if (hour < 20) return "side_quest";
+		return "low_power";
+	};
+
+	const updateArcadeStatus = () => {
+		if (!arcadeStatus) return;
+		const now = new Date();
+		arcadeStatus.textContent = getArcadeStatusForHour(now.getHours());
+		arcadeStatus.title = `Updated from local time: ${now.toLocaleTimeString([], {
+			hour: "2-digit",
+			minute: "2-digit",
+		})}`;
+	};
+
+	updateArcadeStatus();
+	setInterval(updateArcadeStatus, 60 * 1000);
 </script>

@@ -1,13 +1,65 @@
----
-import RunnerGame from "./RunnerGame.astro";
----
+<div id="about-me" class="pt-4 w-full">
+    <section class="mx-auto w-full max-w-3xl px-5 font-mono">
+        <h2 class="mb-2 flex items-center gap-3 border border-dashed border-gray-500 bg-gray-50 px-3 py-2 font-mono text-sm font-bold text-black">
+            <span class="min-w-0 truncate">
+                <span class="text-gray-500">~/portfolio</span> $ cat about-me.yml<span class="terminal-block-cursor" aria-hidden="true"></span>
+            </span>
+        </h2>
 
-<div class="pt-4">
-    <p class="text-gray-700 text-base leading-relaxed font-mono px-5 justify-center items-center">
-                Hello! I'm Yash Singh (22), a software dev. Yap yap yap yap... I recently finished studying computer science at a <span class="redacted">redacted university</span>, and right now I'm working on problems around security automation. I like reading, learning random stuff, and occasionally throwing thoughts into the void.
-                </p>
-                <div class="justify-center flex mt-4 p-4">
-                                <a href="https://x.com/0xafafaf" target="_blank" rel="noreferrer" aria-label="X" class="px-2">𝕏</a>
-                                <a href="https://github.com/yashsinghcodes" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-                </div>
+        <div class="border border-dashed border-gray-500 bg-gray-50 text-sm md:text-base leading-relaxed text-gray-700">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-400 px-3 py-2 text-xs font-bold text-gray-600">
+                <span>format: yaml</span>
+                <span>status: <span id="time-status">loading</span></span>
+            </div>
+            <div class="px-4 py-3">
+                <div class="text-gray-500">---</div>
+                <div><span class="text-black font-semibold">name</span>: Yash Singh</div>
+                <div><span class="text-black font-semibold">age</span>: 22</div>
+                <div><span class="text-black font-semibold">role</span>:</div>
+                <div class="pl-6">- software dev</div>
+                <div class="pl-6">- professional yapper</div>
+                <div class="pl-6">- occasional problem solver</div>
+                <div><span class="text-black font-semibold">education</span>:</div>
+                <div class="pl-6">field: computer science</div>
+                <div class="pl-6">university: <span class="redacted">redacted university</span></div>
+                <div><span class="text-black font-semibold">current_quest</span>: make security automation less painful</div>
+                <div><span class="text-black font-semibold">side_processes</span>:</div>
+                <div class="pl-6">- reading</div>
+                <div class="pl-6">- learning random stuff</div>
+                <div class="pl-6">- throwing thoughts into the void</div>
+                <div class="text-gray-500">...</div>
+            </div>
+        </div>
+
+        <div id="social" class="flex justify-center gap-4 mt-4 p-4 text-lg text-black">
+            <a href="https://x.com/0xafafaf" target="_blank" rel="noreferrer" aria-label="X" class="hover:bg-black hover:text-white px-1">𝕏</a>
+            <a href="https://github.com/yashsinghcodes" target="_blank" rel="noreferrer" aria-label="GitHub" class="hover:bg-black hover:text-white px-1"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+        </div>
+    </section>
 </div>
+
+<script>
+	const status = document.getElementById("time-status");
+
+	const getStatusForHour = (hour) => {
+		if (hour >= 22 || hour < 6) return "eppy";
+		if (hour < 10) return "booting";
+		if (hour < 13) return "locked_in";
+		if (hour < 17) return "yapping";
+		if (hour < 20) return "side_questing";
+		return "winding_down";
+	};
+
+	const updateStatus = () => {
+		if (!status) return;
+		const now = new Date();
+		status.textContent = getStatusForHour(now.getHours());
+		status.title = `Updated from local time: ${now.toLocaleTimeString([], {
+			hour: "2-digit",
+			minute: "2-digit",
+		})}`;
+	};
+
+	updateStatus();
+	setInterval(updateStatus, 60 * 1000);
+</script>
