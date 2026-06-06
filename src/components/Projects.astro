@@ -1,33 +1,38 @@
 ---
 const projects = [
 	{
-		name: "schemaless",
+		name: "wik",
 		status: "active",
 		accent: "ACTIVE",
-		stack: ["go", "llm", "json"],
-		kind: "json translation engine",
-		note: "maps arbitrary json into standard schemas without writing custom mappers forever",
+		stack: ["python"],
+		kind: "cli based wikipedia",
+		note: "a command line interface for browsing wikipedia, built for fun and to scratch an itch for a more terminaly wikipedia experience. features include fuzzy search, article previews, and a general refusal to look like the official wikipedia website",
 		links: [
-			{ label: "github", href: "https://github.com/frikky/schemaless" },
+			{ label: "github", href: "https://github.com/yashsinghcodes/wik" },
+			{ label: "pypi", href: "https://pypi.org/project/wik/" },
 		],
 	},
 	{
-		name: "security automation",
-		status: "shipping",
-		accent: "SHIP",
-		stack: ["workflows", "agents", "apis"],
-		kind: "automation systems",
-		note: "tools and workflows for making security operations less manual and less painful",
-		links: [],
+		name: "dns-resolver",
+		status: "shipped",
+		accent: "SHIPPED",
+		stack: ["go", "networking", "dns"],
+		kind: "dns resolver library",
+		note: "dns resolver written from scratch in go, built to deepen my understanding of dns and networking. features include support for udp and tcp, caching, and a general refusal to use any existing dns libraries",
+		links: [
+			{ label: "github", href: "https://github.com/yashsinghcodes/dns-resolver" },
+		],
 	},
 	{
-		name: "this website",
-		status: "weird",
-		accent: "LIVE",
-		stack: ["astro", "tailwind", "canvas"],
+		name: "kreo-backlight",
+		status: "shipped",
+		accent: "SHIPPED",
+		stack: ["python"],
 		kind: "terminal portfolio",
-		note: "ascii header, yaml bio, tiny asteroids, and a general refusal to look like linkedin",
-		links: [],
+		note: "Reverse engineering the Kreo keyboard backlight to control it from macOS and Linux",
+		links: [
+			{ label: "github", href: "https://github.com/yashsinghcodes/kreo-backlight" },
+		],
 	},
 ];
 ---
