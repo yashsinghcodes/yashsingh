@@ -38,67 +38,67 @@ const projects = [
 ---
 
 <section id="projects" class="mx-auto mt-6 w-full max-w-3xl px-5 font-mono">
-	<h2 class="mb-2 flex items-center gap-3 border border-dashed border-gray-500 bg-gray-50 px-3 py-2 text-sm font-bold text-black">
+	<h2 class="mb-2 flex items-center gap-3 border border-dashed border-gray-500 bg-gray-50 px-3 py-2 text-sm font-bold text-black dark:border-zinc-500 dark:bg-zinc-900 dark:text-zinc-100">
 		<span class="min-w-0 truncate">
-			<span class="text-gray-500">~/portfolio</span> $ projects --tui<span class="terminal-block-cursor" aria-hidden="true"></span>
+			<span class="text-gray-500 dark:text-zinc-400">~/portfolio</span> $ projects --tui<span class="terminal-block-cursor" aria-hidden="true"></span>
 		</span>
 	</h2>
 
-	<div class="border border-dashed border-gray-500 bg-gray-50 text-sm text-gray-700">
-		<div class="flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-400 px-3 py-2 text-xs font-bold text-gray-600">
+	<div class="border border-dashed border-gray-500 bg-gray-50 text-sm text-gray-700 dark:border-zinc-500 dark:bg-zinc-900 dark:text-zinc-300">
+		<div class="flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-400 px-3 py-2 text-xs font-bold text-gray-600 dark:border-zinc-600 dark:text-zinc-400">
 			<span>view: projects</span>
 			<span>count: {projects.length}</span>
 		</div>
 
-		<div class="grid grid-cols-[1.2rem_1fr_5.5rem] gap-3 border-b border-dashed border-gray-400 bg-white/60 px-3 py-2 text-xs font-bold uppercase text-gray-500 sm:grid-cols-[1.2rem_1fr_5.5rem_6rem]">
+		<div class="grid grid-cols-[1.2rem_1fr_5.5rem] gap-3 border-b border-dashed border-gray-400 bg-white/60 px-3 py-2 text-xs font-bold uppercase text-gray-500 sm:grid-cols-[1.2rem_1fr_5.5rem_6rem] dark:border-zinc-600 dark:bg-zinc-800/60 dark:text-zinc-400">
 			<span></span>
 			<span>name</span>
 			<span>status</span>
 			<span class="hidden sm:block">action</span>
 		</div>
 
-		<div class="divide-y divide-dashed divide-gray-300">
+		<div class="divide-y divide-dashed divide-gray-300 dark:divide-zinc-700">
 			{projects.map((project, index) => (
 				<details class="group">
-					<summary class="grid cursor-pointer list-none grid-cols-[1.2rem_1fr_5.5rem] gap-3 px-3 py-2 font-bold text-black transition-colors hover:bg-black hover:text-white group-open:bg-black group-open:text-white sm:grid-cols-[1.2rem_1fr_5.5rem_6rem]">
-						<span class="text-gray-500 group-hover:text-white group-open:text-white">
+					<summary class="grid cursor-pointer list-none grid-cols-[1.2rem_1fr_5.5rem] gap-3 px-3 py-2 font-bold text-black transition-colors hover:bg-black hover:text-white group-open:bg-black group-open:text-white sm:grid-cols-[1.2rem_1fr_5.5rem_6rem] dark:text-zinc-100 dark:hover:bg-zinc-100 dark:hover:text-zinc-950 dark:group-open:bg-zinc-100 dark:group-open:text-zinc-950">
+						<span class="text-gray-500 group-hover:text-white group-open:text-white dark:text-zinc-400 dark:group-hover:text-zinc-950 dark:group-open:text-zinc-950">
 							<span class="group-hover:hidden group-open:hidden">$</span>
 							<span class="hidden group-hover:inline group-open:inline">&gt;</span>
 						</span>
 						<span class="truncate">
 							<span>{project.name}</span>
-							<span class="ml-2 hidden text-xs font-normal text-gray-500 group-hover:text-gray-300 group-open:text-gray-300 sm:inline">./projects/{project.name}.yml</span>
+							<span class="ml-2 hidden text-xs font-normal text-gray-500 group-hover:text-gray-300 group-open:text-gray-300 sm:inline dark:text-zinc-400 dark:group-hover:text-zinc-700 dark:group-open:text-zinc-700">./projects/{project.name}.yml</span>
 						</span>
-						<span class="text-gray-600 group-hover:text-white group-open:text-white">[{project.accent}]</span>
-						<span class="hidden text-gray-500 group-hover:text-white group-open:text-white sm:block">[open]</span>
+						<span class="text-gray-600 group-hover:text-white group-open:text-white dark:text-zinc-400 dark:group-hover:text-zinc-950 dark:group-open:text-zinc-950">[{project.accent}]</span>
+						<span class="hidden text-gray-500 group-hover:text-white group-open:text-white sm:block dark:text-zinc-400 dark:group-hover:text-zinc-950 dark:group-open:text-zinc-950">[open]</span>
 					</summary>
 
-					<div class="border-t border-dashed border-gray-300 bg-white/50 px-3 py-3 leading-relaxed">
-						<div class="border border-dashed border-gray-300 bg-gray-50 px-3 py-2">
-							<div class="mb-2 flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-300 pb-2 text-xs font-bold text-gray-500">
+					<div class="border-t border-dashed border-gray-300 bg-white/50 px-3 py-3 leading-relaxed dark:border-zinc-700 dark:bg-zinc-800/60">
+						<div class="border border-dashed border-gray-300 bg-gray-50 px-3 py-2 dark:border-zinc-700 dark:bg-zinc-900">
+							<div class="mb-2 flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-300 pb-2 text-xs font-bold text-gray-500 dark:border-zinc-700 dark:text-zinc-400">
 								<span>cat ./projects/{project.name}.yml</span>
 								<span>status: {project.status}</span>
 							</div>
-							<div class="text-gray-500">---</div>
-							<div><span class="font-semibold text-black">project</span>: {project.name}</div>
-							<div><span class="font-semibold text-black">kind</span>: {project.kind}</div>
-							<div><span class="font-semibold text-black">status</span>: {project.status}</div>
-							<div><span class="font-semibold text-black">stack</span>:</div>
+							<div class="text-gray-500 dark:text-zinc-500">---</div>
+							<div><span class="font-semibold text-black dark:text-zinc-100">project</span>: {project.name}</div>
+							<div><span class="font-semibold text-black dark:text-zinc-100">kind</span>: {project.kind}</div>
+							<div><span class="font-semibold text-black dark:text-zinc-100">status</span>: {project.status}</div>
+							<div><span class="font-semibold text-black dark:text-zinc-100">stack</span>:</div>
 							{project.stack.map((item) => <div class="pl-6">- {item}</div>)}
-							<div><span class="font-semibold text-black">note</span>: {project.note}</div>
-							<div><span class="font-semibold text-black">actions</span>:</div>
+							<div><span class="font-semibold text-black dark:text-zinc-100">note</span>: {project.note}</div>
+							<div><span class="font-semibold text-black dark:text-zinc-100">actions</span>:</div>
 							<div class="flex flex-wrap gap-2 pl-6 pt-1">
 								{project.links.length > 0 ? (
 									project.links.map((link) => (
-										<a href={link.href} target="_blank" rel="noreferrer" class="font-bold hover:bg-black hover:text-white">
+										<a href={link.href} target="_blank" rel="noreferrer" class="font-bold hover:bg-black hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-950">
 											[ {link.label} ]
 										</a>
 									))
 								) : (
-									<span class="text-gray-500">[ local_only ]</span>
+									<span class="text-gray-500 dark:text-zinc-500">[ local_only ]</span>
 								)}
 							</div>
-							<div class="text-gray-500">...</div>
+							<div class="text-gray-500 dark:text-zinc-500">...</div>
 						</div>
 					</div>
 				</details>

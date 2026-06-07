@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 	--font-mono: "JetBrains Mono", monospace;
 }
@@ -27,7 +29,7 @@
 	display: inline-block;
 	width: 0.65em;
 	height: 1.05em;
-	background: #111827;
+	background: currentColor;
 	transform: translateY(0.16em);
 	animation: terminal-smooth-blink 1.15s ease-in-out infinite;
 }
@@ -62,12 +64,11 @@
 .redacted {
 	display: inline-block;
 	padding-inline: 0.35em;
-	background: #000;
-	color: #000;
+	background: currentColor;
+	color: currentColor;
 	user-select: none;
 	vertical-align: baseline;
 }
-
 
 .thinking-stick-figure {
 	width: 132px;
