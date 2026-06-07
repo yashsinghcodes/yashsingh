@@ -1,0 +1,134 @@
+---
+const formatDuration = ({ startYear, startMonth, end = new Date() }) => {
+	const totalMonths =
+		(end.getFullYear() - startYear) * 12 + (end.getMonth() - startMonth) + 1;
+	const years = Math.floor(totalMonths / 12);
+	const months = totalMonths % 12;
+	const parts = [];
+
+	if (years > 0) parts.push(`${years} yr${years === 1 ? "" : "s"}`);
+	if (months > 0) parts.push(`${months} mo${months === 1 ? "" : "s"}`);
+
+	return parts.length > 0 ? parts.join(" ") : "1 mo";
+};
+
+const experiences = [
+	{
+		hash: "9f4c2a1",
+		refs: "HEAD -> master, origin/master",
+		company: "Shuffle",
+		logo: "SH",
+		role: "Software Engineer",
+		type: "Full-time",
+		period: "May 2024 - Present",
+		duration: formatDuration({ startYear: 2024, startMonth: 4 }),
+		current: true,
+		location: "Remote",
+		body: [
+			"developing and maintaining core Shuffle platform features across backend services, workflow execution, and integrations",
+			"working on self-hosted/on-premise deployment support across Kubernetes and Docker environments",
+			"improving platform reliability, maintainability, and operational workflows for security automation use cases",
+		],
+		skills: ["security automation", "go", "react", "kubernetes", "docker", "api integrations"],
+	},
+	{
+		hash: "c71d8ee",
+		refs: "gail/internship",
+		company: "GAIL (India) Limited",
+		logo: "GI",
+		role: "Project Intern",
+		type: "Internship",
+		period: "Jul 2025 - Sep 2025",
+		duration: "3 mos",
+		location: "Remote",
+		body: [
+			"developed and deployed a geofencing-based attendance system after Smart India Hackathon",
+			"provided secure location-aware attendance tracking for GAIL (India)",
+		],
+		skills: ["geofencing", "attendance systems", "location-aware tracking", "python", "flask", "next", "flutter"],
+	},
+	{
+		hash: "4b19a0f",
+		refs: "tag: freelance-v1, archive/freelance",
+		company: "Freelancer.com",
+		logo: "FL",
+		role: "Freelance Software Engineer",
+		type: "Freelance",
+		period: "Mar 2019 - Apr 2019",
+		duration: "2 mos",
+		location: "India",
+		body: ["worked on a freelance project involving data extraction and API-oriented development"],
+		skills: ["python", "api development"],
+		links: [
+			{
+				label: "project",
+				href: "https://www.freelancer.com/projects/php/list-want-xls-file-all/?linkid=1",
+			},
+		],
+	},
+];
+---
+
+<section id="work" class="mx-auto mt-6 w-full max-w-3xl px-5 font-mono">
+	<h2 class="mb-2 flex items-center gap-3 border border-dashed border-gray-500 bg-gray-50 px-3 py-2 text-sm font-bold text-black">
+		<span class="min-w-0 truncate">
+			<span class="text-gray-500">~/portfolio</span> $ git log --work<span class="terminal-block-cursor" aria-hidden="true"></span>
+		</span>
+	</h2>
+
+	<div class="border border-dashed border-gray-500 bg-gray-50 text-sm text-gray-700">
+		<div class="flex flex-wrap items-center justify-between gap-2 border-b border-dashed border-gray-400 px-3 py-2 text-xs font-bold text-gray-600">
+			<span>branch: experience</span>
+			<span>commits: {experiences.length}</span>
+		</div>
+
+		<div class="divide-y divide-dashed divide-gray-300">
+			{experiences.map((item, index) => (
+				<article class="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 px-3 py-3">
+					<div class="flex flex-col items-center">
+						<div class="flex h-8 w-8 items-center justify-center border border-black bg-gray-50 text-xs font-black text-black">
+							{item.logo}
+						</div>
+						<div class="mt-2 h-full min-h-10 border-l border-dashed border-gray-400"></div>
+					</div>
+
+					<div class="min-w-0">
+						<div class="flex flex-wrap items-baseline gap-x-2">
+							<span class="font-bold text-black">commit {item.hash}</span>
+							<span class="text-gray-500">({item.refs})</span>
+						</div>
+						<div class="mt-1 text-black">
+							<span class="font-bold">{item.role}</span>
+							<span class="text-gray-500"> at </span>
+							<span>{item.company}</span>
+						</div>
+						<div class="text-xs font-bold text-gray-500">
+							{item.company} · {item.type} · {item.period} · {item.duration} · {item.location}
+						</div>
+
+						<div class="mt-3 border border-dashed border-gray-300 bg-white/50 px-3 py-2 leading-relaxed">
+							<div class="text-gray-500">Author: Yash Singh &lt;work@portfolio&gt;</div>
+							<div class="text-gray-500">Date: {item.period}</div>
+							<div class="mt-2">
+								{item.body.map((line) => <div class="pl-4">- {line}</div>)}
+							</div>
+							<div class="mt-2">
+								<span class="font-semibold text-black">skills</span>:
+								<span> [{item.skills.join(", ")}]</span>
+							</div>
+							{item.links && (
+								<div class="mt-2 flex flex-wrap gap-2">
+									{item.links.map((link) => (
+										<a href={link.href} target="_blank" rel="noreferrer" class="font-bold hover:bg-black hover:text-white">
+											[ {link.label} ]
+										</a>
+									))}
+								</div>
+							)}
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
